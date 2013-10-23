@@ -1,7 +1,7 @@
 #!/bin/bash
 
-CONTAINER_ID=$(sudo docker build  - < mitmproxy.docker)
+sudo docker build -t twillouer/mitmproxy - < mitmproxy.docker
 
-sudo docker top
+echo "Container for mitmproxy done"
 
-echo "Container for mitmproxy : ${CONTAINER_ID}"
+sudo docker run -i -t -p=8080:8080 twillouer/mitmproxy

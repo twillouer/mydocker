@@ -9,8 +9,7 @@ RUN pip install mitmproxy
 EXPOSE 8080
 
 # mitmproxy need utf8
-RUN echo "LANG=en_US.UTF-8 mitmproxy" > /mitmproxy.sh 
-RUN chmod +x /mitmproxy.sh
+ENV LANG en_US.UTF-8
 
-ENTRYPOINT ["/mitmproxy.sh"]
+ENTRYPOINT ["mitmproxy"]
 
