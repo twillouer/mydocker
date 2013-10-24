@@ -2,11 +2,14 @@
 
 ## see http://docs.docker.io/en/latest/examples/mongodb/
 
+DATA=$(readlink -f ${1:-data})
+mkdir -p $DATA
+
 sudo docker build -t twillouer/mongodb - < mongodb.docker 
 
 # Lean and mean
-MONGO_ID=$(sudo docker run -d twillouer/mongodb --noprealloc --smallfiles)
-PORT=$(sudo docker port $MONDO_ID)
+MONGO_ID=$(sudo docker run -v=$DATA:/data/db -d twillouer/mongodb --noprealloc --smallfiles)
+PORT=$(sudo docker port $MONGO_ID 27017)
 
 echo ID : $MONGO_ID
 echo "##to connect : "
