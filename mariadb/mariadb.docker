@@ -1,5 +1,5 @@
 FROM ubuntu:quantal
-MAINTAINER William Delanoue, william.delanoue@deveryware.net
+MAINTAINER William Delanoue, william.delanoue@gmail.com
 RUN echo "deb http://fr.archive.ubuntu.com/ubuntu quantal main restricted universe multiverse\n" \
          "deb http://ftp.igh.cnrs.fr/pub/mariadb/repo/5.5/ubuntu quantal main" \
           > /etc/apt/sources.list
