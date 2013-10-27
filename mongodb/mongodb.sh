@@ -2,7 +2,7 @@
 
 ## see http://docs.docker.io/en/latest/examples/mongodb/
 
-sudo docker build -t twillouer/mongodb - < mongodb.docker || exit
+sudo docker build -t twillouer/mongodb . || exit
 
 # Lean and mean
 MONGO_ID=$(sudo docker run -d twillouer/mongodb --noprealloc --smallfiles)

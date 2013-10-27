@@ -4,7 +4,7 @@
 
 REPL_COUNT=${1:-3}
 
-sudo docker build -t twillouer/mongodb - < mongodb.docker || exit
+sudo docker build -t twillouer/mongodb . || exit
 
 CONFIGURATE="rs.initiate() ; sleep(15000); "
 

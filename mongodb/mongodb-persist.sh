@@ -5,7 +5,7 @@
 DATA=$(readlink -f ${1:-data})
 mkdir -p $DATA
 
-sudo docker build -t twillouer/mongodb - < mongodb.docker 
+sudo docker build -t twillouer/mongodb . || exit
 
 # Lean and mean
 MONGO_ID=$(sudo docker run -v=$DATA:/data/db -d twillouer/mongodb --noprealloc --smallfiles)
