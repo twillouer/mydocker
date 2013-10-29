@@ -6,7 +6,7 @@ sudo docker build -t twillouer/mongodb . || exit
 
 # Lean and mean
 MONGO_ID=$(sudo docker run -d twillouer/mongodb --noprealloc --smallfiles)
-PORT=$(sudo docker port $MONGO_ID 27017)
+PORT=$(sudo docker port "$MONGO_ID" 27017)
 
 echo ID : $MONGO_ID
 echo "##to connect : "
