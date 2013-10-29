@@ -31,7 +31,7 @@ RUN sed -i -e "s/AllowOverride None//" /etc/apache2/sites-available/default
 RUN sed -i -e "s/'SALT', ''/'SALT', '$(dd if=/dev/urandom count=1 2> /dev/null | openssl dgst -sha1 |awk '{print $NF}')'/" inc/poche/config.inc.php
 
 # Setup sqlite
-RUN cp install/poche.sqlite db
+RUN mv install/poche.sqlite db
 
 # Can access anything
 RUN chown -R www-data:www-data /var/www
