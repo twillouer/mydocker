@@ -1,5 +1,8 @@
 #!/bin/bash
 
+# Params :
+# - dbpath where to store db
+
 DBPATH=${1:-db}
 
 
@@ -29,7 +32,7 @@ fi
 
 sudo chmod 777 "$DBPATH" "$DBPATH/poche.sqlite"
 
-CONTAINER_ID=$(sudo docker run -d -v=$DBPATH:/var/www/db $CONTAINERNAME)
+CONTAINER_ID=$(sudo docker run -d -v=$DBPATH:/var/www/db -p=8001:80 $CONTAINERNAME)
 PORT=$(sudo docker port $CONTAINER_ID 80)
 
 echo
