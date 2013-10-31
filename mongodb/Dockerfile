@@ -1,4 +1,4 @@
-FROM ubuntu
+FROM ubuntu:quantal
 MAINTAINER William Delanoue, william.delanoue@gmail.com
 # Add 10gen official apt source to the sources list
 RUN apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv 7F0CEB10

@@ -3,8 +3,10 @@
 # if you want to change the container name.
 CONTAINERNAME=mariadbpersist
 
-if ! $(sudo docker images $CONTAINERNAME | grep $CONTAINERNAME) ;
+if sudo docker images "$CONTAINERNAME" | grep -q "$CONTAINERNAME" ;
 then
+ echo "Container $CONTAINERNAME found"
+else
  echo "# Change group/user for mysql"
  MYSQLID=$(id -u mysql)
  MYSQLGRP=$(id -g mysql)
@@ -21,7 +23,7 @@ then
  rm chown.sh
 fi
 
-CONTAINER_ID=$(sudo docker run -v=/var/lib/mysql:/var/lib/mysql -p=3306:3306 -d $CONTAINERNAME) || exit
+CONTAINER_ID=$(sudo docker run -v=/var/lib/mysql:/var/lib/mysql -p=127.0.0.1:3306:3306 -d $CONTAINERNAME) || exit
 PORT=$(sudo docker port $CONTAINER_ID 3306) || exit
 
 echo

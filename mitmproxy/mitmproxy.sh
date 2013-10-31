@@ -1,6 +1,6 @@
 #!/bin/bash
 
-sudo docker build -t twillouer/mitmproxy - < mitmproxy.docker
+sudo docker build -t twillouer/mitmproxy .
 
 echo "Container for mitmproxy done"
 
