@@ -10,7 +10,7 @@ sudo mount -t tmpfs -o size=16000M tmpfs $TMPDIR || exit
 
 # Lean and mean
 MONGO_ID=$(sudo docker run -d -v="$TMPDIR":/data/db twillouer/mongodb --noprealloc --smallfiles --nojournal)
-PORT=$(sudo docker port $MONGO_ID 27017)
+PORT=$(sudo docker port $MONGO_ID 27017 | cut -d":" -f1)
 
 echo ID : $MONGO_ID
 echo "##to connect : "

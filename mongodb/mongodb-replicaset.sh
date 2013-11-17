@@ -14,7 +14,7 @@ do
 # --smallfiles --noprealloc --nojournal --oplogSize 10
 
   MONGO_ID=$(sudo docker run -d twillouer/mongodb --noprealloc --smallfiles --oplogSize 10 --nojournal --replSet docker)
-  PORT=$(sudo docker port ${MONGO_ID} 27017)
+  PORT=$(sudo docker port ${MONGO_ID} 27017 | cut -d":" -f1)
   # The primary will be the last 
   PRIMARY_PORT=$PORT
   IP=$(sudo docker inspect ${MONGO_ID} | grep IPAddress | cut -d '"' -f 4)
