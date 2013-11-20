@@ -24,7 +24,7 @@ else
 fi
 
 CONTAINER_ID=$(sudo docker run -v=/var/lib/mysql:/var/lib/mysql -p=127.0.0.1:3306:3306 -d $CONTAINERNAME) || exit
-PORT=$(sudo docker port $CONTAINER_ID 3306) || exit
+PORT=$(sudo docker port $CONTAINER_ID 3306 | cut -d ":" -f 1) || exit
 
 echo
 echo
