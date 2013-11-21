@@ -6,12 +6,9 @@ RUN cat /proc/mounts > /etc/mtab
 RUN apt-get update
 RUN apt-get install -y wget
 
-RUN wget -S -O - http://downloads.mysql.com/archives/get/file/mysql-5.0.51a-linux-i686.tar.gz | tar xvzf - 
+RUN wget -S -O - http://downloads.mysql.com/archives/get/file/mysql-5.1.61-linux-x86_64-glibc23.tar.gz | tar xvzf - 
 
-#RUN tar xvzf mysql-*.tar.gz
-#RUN rm mysql-*.tar.gz
-
-RUN mv mysql-5.0.* /usr/local/mysql
+RUN mv mysql-5.1.* /usr/local/mysql
 
 RUN groupadd mysql
 RUN useradd mysql -g mysql -d /usr/local/mysql
