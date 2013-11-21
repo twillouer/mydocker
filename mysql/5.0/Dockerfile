@@ -21,7 +21,7 @@ RUN chown mysql.mysql -R /usr/local/mysql
 RUN cd /usr/local/mysql && rm -rf data &&  ./scripts/mysql_install_db --user=mysql
 
 WORKDIR /usr/local/mysql
-RUN ./bin/mysqld_safe & sleep 2 && ./bin/mysql -u root -e "CREATE USER 'docker'@'%' IDENTIFIED BY 'docker'; GRANT ALL PRIVILEGES ON *.* TO 'docker'@'%' WITH GRANT OPTION; FLUSH PRIVILEGES;"  
+RUN ./bin/mysqld_safe & while ! (echo "SHOW DATABASES;" | ./bin/mysql -u root 2>&1 > /dev/null); do sleep 1; done && ./bin/mysql -u root -e "CREATE USER 'docker'@'%' IDENTIFIED BY 'docker'; GRANT ALL PRIVILEGES ON *.* TO 'docker'@'%' WITH GRANT OPTION; FLUSH PRIVILEGES;"  
 
 # Expose mysql port
 EXPOSE 3306
