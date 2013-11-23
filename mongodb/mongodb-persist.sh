@@ -5,11 +5,11 @@
 DATA=$(readlink -f ${1:-data})
 mkdir -p $DATA
 
-sudo docker build -t twillouer/mongodb . || exit
+sudo docker build -t mongodb . || exit
 
 # Lean and mean
-MONGO_ID=$(sudo docker run -v=$DATA:/data/db -d twillouer/mongodb --noprealloc --smallfiles)
-PORT=$(sudo docker port $MONGO_ID 27017 | cut -d":" -f1)
+MONGO_ID=$(sudo docker run -p=27017 -v=$DATA:/data/db -d mongodb --noprealloc --smallfiles)
+PORT=$(sudo docker port $MONGO_ID 27017 | cut -d":" -f2)
 
 echo ID : $MONGO_ID
 echo "##to connect : "

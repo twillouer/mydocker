@@ -3,14 +3,14 @@
 ## see http://docs.docker.io/en/latest/examples/mongodb/
 ## see http://java.dzone.com/articles/how-use-mongodb-pure-memory-db
 
-sudo docker build -t twillouer/mongodb . || exit
+sudo docker build -t mongodb . || exit
 
 TMPDIR=$(mktemp -d)
 sudo mount -t tmpfs -o size=16000M tmpfs $TMPDIR || exit
 
 # Lean and mean
-MONGO_ID=$(sudo docker run -d -v="$TMPDIR":/data/db twillouer/mongodb --noprealloc --smallfiles --nojournal)
-PORT=$(sudo docker port $MONGO_ID 27017 | cut -d":" -f1)
+MONGO_ID=$(sudo docker run -d -p=27017 -v="$TMPDIR":/data/db mongodb --noprealloc --smallfiles --nojournal)
+PORT=$(sudo docker port $MONGO_ID 27017 | cut -d":" -f2)
 
 echo ID : $MONGO_ID
 echo "##to connect : "

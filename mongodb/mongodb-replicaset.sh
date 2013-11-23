@@ -4,7 +4,7 @@
 
 REPL_COUNT=${1:-3}
 
-sudo docker build -t twillouer/mongodb . || exit
+sudo docker build -t mongodb . || exit
 
 CONFIGURATE="rs.initiate() ; sleep(15000); "
 
@@ -13,8 +13,8 @@ for i in $(seq 1 $REPL_COUNT) ;
 do
 # --smallfiles --noprealloc --nojournal --oplogSize 10
 
-  MONGO_ID=$(sudo docker run -d twillouer/mongodb --noprealloc --smallfiles --oplogSize 10 --nojournal --replSet docker)
-  PORT=$(sudo docker port ${MONGO_ID} 27017 | cut -d":" -f1)
+  MONGO_ID=$(sudo docker run -d -p=27017 mongodb --noprealloc --smallfiles --oplogSize 10 --nojournal --replSet docker) || exit
+  PORT=$(sudo docker port ${MONGO_ID} 27017 | cut -d":" -f2)
   # The primary will be the last 
   PRIMARY_PORT=$PORT
   IP=$(sudo docker inspect ${MONGO_ID} | grep IPAddress | cut -d '"' -f 4)
@@ -24,6 +24,8 @@ done
 
 while ! sudo docker logs $MONGO_ID | grep "waiting for connections on port 27017"
 do 
+echo $MONGO_ID
+ sudo docker logs $MONGO_ID
  sleep 2
 done
 
