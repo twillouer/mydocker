@@ -5,8 +5,9 @@ RUN echo "deb http://fr.archive.ubuntu.com/ubuntu quantal main restricted univer
 RUN apt-get update
 RUN apt-get upgrade -y
 
+ENV DEBIAN_FRONTEND noninteractive
+
 RUN apt-get install -y python-software-properties software-properties-common
-RUN apt-get update
 
 RUN add-apt-repository ppa:webupd8team/java
 RUN apt-get update
