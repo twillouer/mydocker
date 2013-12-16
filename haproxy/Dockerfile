@@ -21,3 +21,5 @@ EXPOSE 80
 ADD auto-link-other-containers.sh /
 ADD haproxy.template.cfg /etc/haproxy/
 RUN chmod +x auto-link-other-containers.sh
+
+ENTRYPOINT ["/auto-link-other-containers.sh"]

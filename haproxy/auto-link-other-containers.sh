@@ -19,5 +19,7 @@ do
 
  echo "	server srv${INCREMENT} ${IP}:${PORT} weight 1 maxconn 100 check inter 4000" >> haproxy.cfg
  INCREMENT=$((INCREMENT+1))
- echo $INCREMENT
 done
+
+echo "Launch with : haproxy -V -f /etc/haproxy/haproxy.cfg"
+haproxy -V -f /etc/haproxy/haproxy.cfg
