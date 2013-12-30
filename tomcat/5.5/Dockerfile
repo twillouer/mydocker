@@ -7,17 +7,16 @@ RUN apt-get upgrade -y
 
 ENV DEBIAN_FRONTEND noninteractive
 
-RUN apt-get install -y python-software-properties software-properties-common
+RUN apt-get install -y python-software-properties software-properties-common curl
 
 RUN add-apt-repository ppa:webupd8team/java
 RUN apt-get update
 RUN echo oracle-java7-installer shared/accepted-oracle-license-v1-1 select true | /usr/bin/debconf-set-selections
-RUN apt-get install -y oracle-java7-installer -
+RUN apt-get install -y oracle-java7-installer
 
-RUN wget http://archive.apache.org/dist/tomcat/tomcat-5/v5.5.25/bin/apache-tomcat-5.5.25.tar.gz
-RUN tar xvzf apache-tomcat-5.5.25.tar.gz && rm apache-tomcat-5.5*.tar.gz
+RUN cd / && curl -o - http://archive.apache.org/dist/tomcat/tomcat-5/v5.5.25/bin/apache-tomcat-5.5.25.tar.gz | tar xvzf -
 
-RUN ln -s apache-tomcat-5.5* /tomcat
+RUN ln -s /apache-tomcat-5.5* /tomcat
 
 RUN useradd tomcat --home-dir /tomcat
 RUN chown -R tomcat.tomcat /tomcat /tomcat/*
