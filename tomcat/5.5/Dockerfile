@@ -17,7 +17,7 @@ RUN apt-get install -y oracle-java7-installer -
 RUN wget http://archive.apache.org/dist/tomcat/tomcat-5/v5.5.25/bin/apache-tomcat-5.5.25.tar.gz
 RUN tar xvzf apache-tomcat-5.5.25.tar.gz && rm apache-tomcat-5.5*.tar.gz
 
-RUN ln -s apache-tomcat-5.5* tomcat
+RUN ln -s apache-tomcat-5.5* /tomcat
 
 RUN useradd tomcat --home-dir /tomcat
 RUN chown -R tomcat.tomcat /tomcat /tomcat/*
