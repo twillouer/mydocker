@@ -2,8 +2,9 @@
 
 # if you want to change the container name.
 CONTAINERNAME=mariadbpersist
+SUDO=
 
-if sudo docker images "$CONTAINERNAME" | grep -q "$CONTAINERNAME" ;
+if $SUDO docker images "$CONTAINERNAME" | grep -q "$CONTAINERNAME" ;
 then
  echo "Container $CONTAINERNAME found"
 else
@@ -19,12 +20,12 @@ else
  echo "mv /var/log/mysql /var/log/mysqlold" >> chown.sh
  echo "mv /var/log/mysqlold /var/log/mysql" >> chown.sh
 
- sudo docker build -t $CONTAINERNAME . || exit
+ $SUDO docker build -t $CONTAINERNAME . || exit
  rm chown.sh
 fi
 
-CONTAINER_ID=$(sudo docker run -v=/var/lib/mysql:/var/lib/mysql -p=127.0.0.1:3306:3306 -d $CONTAINERNAME) || exit
-PORT=$(sudo docker port $CONTAINER_ID 3306 | cut -d ":" -f 1) || exit
+CONTAINER_ID=$($SUDO docker run -v=/var/lib/mysql:/var/lib/mysql -p=127.0.0.1:3306:3306 -d $CONTAINERNAME) || exit
+PORT=$($SUDO docker port $CONTAINER_ID 3306 | cut -d ":" -f 1) || exit
 
 echo
 echo
@@ -32,4 +33,4 @@ echo "Runing on port $PORT"
 echo "mysql -u root --port=$PORT"
 echo
 echo "Stop with :"
-echo "sudo docker stop $CONTAINER_ID"
+echo "$SUDO docker stop $CONTAINER_ID"
