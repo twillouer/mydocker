@@ -16,10 +16,10 @@ RUN apt-get install -y oracle-java7-installer
 
 RUN cd / && curl -o - http://archive.apache.org/dist/tomcat/tomcat-5/v5.5.25/bin/apache-tomcat-5.5.25.tar.gz | tar xvzf -
 
-RUN ln -s /apache-tomcat-5.5* /tomcat
+RUN mv /apache-tomcat-5.5* /tomcat
 
 #RUN useradd tomcat --home-dir /tomcat
-#RUN chown -R tomcat.tomcat /tomcat /tomcat/* /apache-tomcat-5.5*
+#RUN chown -R tomcat.tomcat /tomcat /tomcat/*
 
 ENV JAVA_HOME /usr/lib/jvm/java-7-oracle/jre
 #USER tomcat
