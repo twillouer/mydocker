@@ -18,11 +18,11 @@ RUN cd / && curl -o - http://archive.apache.org/dist/tomcat/tomcat-5/v5.5.25/bin
 
 RUN ln -s /apache-tomcat-5.5* /tomcat
 
-RUN useradd tomcat --home-dir /tomcat
-RUN chown -R tomcat.tomcat /tomcat /tomcat/*
+#RUN useradd tomcat --home-dir /tomcat
+#RUN chown -R tomcat.tomcat /tomcat /tomcat/* /apache-tomcat-5.5*
 
 ENV JAVA_HOME /usr/lib/jvm/java-7-oracle/jre
-USER tomcat
+#USER tomcat
 
 EXPOSE 8080
 
