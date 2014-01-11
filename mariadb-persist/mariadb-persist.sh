@@ -2,7 +2,7 @@
 
 # if you want to change the container name.
 CONTAINERNAME=mariadbpersist
-SUDO=
+SUDO=${SUDO:-}
 
 if $SUDO docker images "$CONTAINERNAME" | grep -q "$CONTAINERNAME" ;
 then
