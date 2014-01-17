@@ -9,7 +9,7 @@ RUN apt-get update
 RUN apt-get install -y mariadb-server
 RUN sed -i -e '/^bind-address*/ s/^/#/' /etc/mysql/my.cnf
 
-RUN service mysql stop
+#RUN service mysql stop
 
 ADD chown.sh /chown.sh
 RUN /bin/sh /chown.sh
