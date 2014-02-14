@@ -3,12 +3,10 @@ MAINTAINER William Delanoue, william.delanoue@gmail.com
 RUN echo "deb http://fr.archive.ubuntu.com/ubuntu quantal main restricted universe multiverse\n" \
           > /etc/apt/sources.list
 RUN cat /proc/mounts > /etc/mtab
-RUN apt-get update
-RUN apt-get install -y wget
+RUN apt-get update && apt-get install -y wget libaio1 && apt-get clean
 
 # follow instruction from pdf
-RUN groupadd -g 927 mysql
-RUN useradd -r -u 927 -g mysql mysql
+RUN groupadd -g 927 mysql && useradd -r -u 927 -g mysql mysql
 RUN mkdir -pv /opt/tokutek
 #RUN cd /opt/tokutek && wget http://www.tokutek.com/download.php?df=1 && tar xvzf *.tar.gz
 ADD mysql-5.5.30-tokudb-7.1.0-linux-x86_64.tar.gz /opt/tokutek
@@ -18,8 +16,6 @@ RUN cd /opt/tokutek && \
     cd mysql &&\
     chown -Rv mysql.mysql . &&\
     cp -v support-files/my-small.cnf /etc/my.cnf
-
-RUN apt-get install -y libaio1
 
 RUN mkdir /var/lib/mysql && chown -R mysql.mysql /var/lib/mysql
 
@@ -38,4 +34,4 @@ RUN ./bin/mysqld_safe & sleep 1 && while ! (echo "SHOW DATABASES;" | ./bin/mysql
 EXPOSE 3306
 
 
-ENTRYPOINT ["./bin/mysqld_safe"]
+CMD ["./bin/mysqld_safe"]
