@@ -15,7 +15,7 @@ RUN cd /opt/tokutek && \
     ln -sv mysql-5.5.30-tokudb-7.1.0-linux-x86_64 mysql &&\
     cd mysql &&\
     chown -Rv mysql.mysql . &&\
-    cp -v support-files/my-small.cnf /etc/my.cnf
+    cp -v support-files/my-huge.cnf /etc/my.cnf
 
 RUN mkdir /var/lib/mysql && chown -R mysql.mysql /var/lib/mysql
 
