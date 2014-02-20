@@ -13,9 +13,14 @@ ADD mysql-5.5.30-tokudb-7.1.0-linux-x86_64.tar.gz /opt/tokutek
 #RUN cd /opt/tokutek && tar xvzf mysql-5.5.30-tokudb-7.1.0-linux-x86_64.tar.gz
 RUN cd /opt/tokutek && \
     ln -sv mysql-5.5.30-tokudb-7.1.0-linux-x86_64 mysql &&\
+    chmod ugo+r mysql-5.5.30-tokudb-7.1.0-linux-x86_64 &&\
+    chmod u+rw mysql-5.5.30-tokudb-7.1.0-linux-x86_64 &&\
     cd mysql &&\
     chown -Rv mysql.mysql . &&\
-    cp -v support-files/my-huge.cnf /etc/my.cnf
+    cp -v support-files/my-small.cnf /etc/my.cnf
+
+# docker bug, don't know why
+RUN mv /opt/tokutek/mysql-5.5.30-tokudb-7.1.0-linux-x86_64 / && mv /mysql-5.5.30-tokudb-7.1.0-linux-x86_64 /opt/tokutek
 
 RUN mkdir /var/lib/mysql && chown -R mysql.mysql /var/lib/mysql
 
