@@ -42,7 +42,7 @@ RUN rm -rf install *.md
 
 # Move to right path
 
-# Expore Apache2
+# Expose Apache2
 EXPOSE 80
 
 ENV APACHE_RUN_USER www-data
