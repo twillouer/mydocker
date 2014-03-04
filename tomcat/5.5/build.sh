@@ -1,3 +1,3 @@
 #!/bin/bash
 
-docker build -t tomcat55 .
+docker build -rm -t tomcat55 .
