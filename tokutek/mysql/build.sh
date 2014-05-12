@@ -1,3 +1,3 @@
 #!/bin/bash
 
-docker build -rm -t tokudb .
+docker build --rm -t tokudb .

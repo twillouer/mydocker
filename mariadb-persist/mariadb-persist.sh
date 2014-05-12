@@ -20,7 +20,7 @@ else
  echo "mv /var/log/mysql /var/log/mysqlold" >> chown.sh
  echo "mv /var/log/mysqlold /var/log/mysql" >> chown.sh
 
- $SUDO docker build -rm -t $CONTAINERNAME . || exit
+ $SUDO docker build --rm -t $CONTAINERNAME . || exit
  rm chown.sh
 fi
 

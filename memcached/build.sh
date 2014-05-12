@@ -1,3 +1,3 @@
 #!/bin/bash
 
-docker build -rm -t memcached .
+docker build --rm -t memcached .

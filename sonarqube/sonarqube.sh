@@ -1,6 +1,6 @@
 #!/bin/bash
 
-docker build -rm -t sonarqube . || exit
+docker build --rm -t sonarqube . || exit
 
 # Lean and mean
 ID=$(docker run -d -p=9000:9000 -p=9092:9092  sonarqube)

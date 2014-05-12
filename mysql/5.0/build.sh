@@ -1,3 +1,3 @@
 #!/bin/bash
 
-docker build -rm -t mysqlProd .
+docker build --rm -t mysql_prod .
