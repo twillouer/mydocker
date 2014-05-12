@@ -2,7 +2,6 @@ FROM ubuntu:quantal
 MAINTAINER William Delanoue, william.delanoue@gmail.com
 RUN echo "deb http://fr.archive.ubuntu.com/ubuntu quantal main restricted universe multiverse\n" \
           > /etc/apt/sources.list
-RUN cat /proc/mounts > /etc/mtab
 RUN apt-get update && apt-get install -y wget libaio1 && apt-get clean
 
 # follow instruction from pdf
