@@ -3,7 +3,7 @@
 ## see http://docs.docker.io/en/latest/examples/mongodb/
 ## see http://java.dzone.com/articles/how-use-mongodb-pure-memory-db
 
-docker build -t mongodb . || exit
+docker build --rm -t mongodb . || exit
 
 TMPDIR=$(mktemp -d)
 sudo mount -t tmpfs -o size=16000M tmpfs $TMPDIR || exit

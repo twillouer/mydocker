@@ -4,7 +4,7 @@
 
 REPL_COUNT=${1:-3}
 
-sudo docker build -t mongodb . || exit
+sudo docker build --rm -t mongodb . || exit
 
 CONFIGURATE="rs.initiate() ; sleep(15000); "
 

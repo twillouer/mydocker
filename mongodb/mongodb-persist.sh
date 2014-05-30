@@ -5,7 +5,7 @@
 DATA=$(readlink -f ${1:-data})
 mkdir -p $DATA
 
-sudo docker build -t mongodb . || exit
+sudo docker --rm build -t mongodb . || exit
 
 # Lean and mean
 MONGO_ID=$(sudo docker run -p=27017 -p=28017 -v=$DATA:/data/db -d mongodb --noprealloc --smallfiles)

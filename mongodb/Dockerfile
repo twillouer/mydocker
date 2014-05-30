@@ -6,7 +6,7 @@ RUN echo 'deb http://downloads-distro.mongodb.org/repo/ubuntu-upstart dist 10gen
 
 # Hack for initctl not being available in Ubuntu
 RUN dpkg-divert --local --rename --add /sbin/initctl
-#RUN ln -s /bin/true /sbin/initctl
+RUN ln -s /bin/true /sbin/initctl || echo "/sbin/initctl already exist" ; ls -latr /sbin/initctl
 
 # Install MongoDB
 RUN apt-get update
