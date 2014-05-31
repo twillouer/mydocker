@@ -1,3 +1,3 @@
 #!/bin/bash
 
-docker build --rm -t mysqlSlave .
+docker build --rm -t mysql_slave .
