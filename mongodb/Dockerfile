@@ -10,7 +10,7 @@ RUN ln -s /bin/true /sbin/initctl || echo "/sbin/initctl already exist" ; ls -la
 
 # Install MongoDB
 RUN apt-get update
-RUN apt-get install mongodb-10gen
+RUN apt-get install mongodb-org
 
 # Create the MongoDB data directory
 RUN mkdir -p /data/db
