@@ -1,6 +1,6 @@
-FROM ubuntu:quantal
+FROM ubuntu:trusty
 MAINTAINER William Delanoue, william.delanoue@gmail.com
-RUN echo "deb http://fr.archive.ubuntu.com/ubuntu quantal main restricted universe multiverse\n" \
+RUN echo "deb http://fr.archive.ubuntu.com/ubuntu trusty main restricted universe multiverse\n" \
          "deb http://www.rabbitmq.com/debian/ testing main\n" \
           > /etc/apt/sources.list
 

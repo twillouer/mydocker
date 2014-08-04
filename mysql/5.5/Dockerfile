@@ -5,14 +5,9 @@ RUN echo "deb http://fr.archive.ubuntu.com/ubuntu trusty main restricted univers
 RUN apt-get update
 RUN apt-get install -y wget
 
-#RUN wget -S -O - http://downloads.mysql.com/archives/get/file/mysql-5.0.51a-linux-i686.tar.gz | tar xvzf - 
-RUN wget http://downloads.mysql.com/archives/get/file/mysql-5.0.51a-linux-i686.tar.gz
-RUN tar xvzf mysql-5.0.51a-linux-i686.tar.gz && rm mysql-5.0.51a-linux-i686.tar.gz
+RUN wget -S -O - http://dev.mysql.com/get/Downloads/MySQL-5.5/mysql-5.5.35-linux2.6-x86_64.tar.gz | tar xvzf - 
 
-#RUN tar xvzf mysql-*.tar.gz
-#RUN rm mysql-*.tar.gz
-
-RUN mv mysql-5.0.* /usr/local/mysql
+RUN mv mysql-5.5.* /usr/local/mysql
 
 RUN groupadd mysql
 RUN useradd mysql -g mysql -d /usr/local/mysql
