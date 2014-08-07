@@ -1,16 +1,10 @@
 FROM ubuntu:trusty
 MAINTAINER William Delanoue, william.delanoue@gmail.com
-RUN echo "deb http://fr.archive.ubuntu.com/ubuntu trusty main restricted universe multiverse\n" \
-          > /etc/apt/sources.list
-RUN apt-get update
-RUN apt-get install -y wget
+
+RUN apt-get update && apt-get install -y wget && apt-get autoclean
 
 #RUN wget -S -O - http://downloads.mysql.com/archives/get/file/mysql-5.0.51a-linux-i686.tar.gz | tar xvzf - 
-RUN wget http://downloads.mysql.com/archives/get/file/mysql-5.0.51a-linux-i686.tar.gz
-RUN tar xvzf mysql-5.0.51a-linux-i686.tar.gz && rm mysql-5.0.51a-linux-i686.tar.gz
-
-#RUN tar xvzf mysql-*.tar.gz
-#RUN rm mysql-*.tar.gz
+RUN wget http://downloads.mysql.com/archives/get/file/mysql-5.0.51a-linux-i686.tar.gz && tar xvzf mysql-5.0.51a-linux-i686.tar.gz && rm mysql-5.0.51a-linux-i686.tar.gz
 
 RUN mv mysql-5.0.* /usr/local/mysql
 
