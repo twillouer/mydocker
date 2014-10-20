@@ -29,10 +29,10 @@ fi
 
 TEMPDIR=$(mktemp -d)
 
-ln -s "$WAR" "$TEMPDIR"
+cp "$WAR" "$TEMPDIR"
 
 
-CONTAINER_ID=$(docker run -d -P -v="$TEMPDIR":/tomcat/webapps tomcat7)
+CONTAINER_ID=$(docker run -d -P -v="$TEMPDIR":/var/lib/tomcat7/webapps tomcat7)
 PORT=$(docker port $CONTAINER_ID 8080 | cut -d ":" -f 2)
 
 echo "\nTomcat 7 running on local post $PORT"

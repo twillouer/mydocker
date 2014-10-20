@@ -1,7 +1,7 @@
 #!/bin/bash
 
-sudo docker build -t twillouer/mitmproxy .
+docker build --rm -t twillouer/mitmproxy .
 
 echo "Container for mitmproxy done"
 
-sudo docker run -i -t -p=8080:8080 twillouer/mitmproxy
+sudo docker run --rm -i -t -p=8080:8080 twillouer/mitmproxy

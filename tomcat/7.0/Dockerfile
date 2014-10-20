@@ -22,4 +22,4 @@ ENV JAVA_HOME /usr/lib/jvm/java-7-oracle/jre
 
 EXPOSE 8080
 
-CMD ["/etc/init.d/tomcat7", "run"]
+CMD ["/etc/init.d/tomcat7", "start"]
