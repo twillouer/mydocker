@@ -1,10 +1,9 @@
 FROM ubuntu:utopic
 MAINTAINER William Delanoue, william.delanoue@gmail.com
-RUN echo "deb http://fr.archive.ubuntu.com/ubuntu trusty main restricted universe multiverse\n" \
-          > /etc/apt/sources.list
-RUN apt-get update && apt-get install -y wget 
-
-RUN wget -S -O - http://downloads.mysql.com/archives/get/file/mysql-5.1.61-linux-x86_64-glibc23.tar.gz | tar xvzf - && \
+RUN echo "deb http://fr.archive.ubuntu.com/ubuntu utopic main restricted universe multiverse\n" > /etc/apt/sources.list && \
+	apt-get update && apt-get install -y wget && \
+	wget -S -O - http://downloads.mysql.com/archives/get/file/mysql-5.1.61-linux-x86_64-glibc23.tar.gz | tar xvzf - && \
+        apt-get purge -y --auto-remove wget && \
 	mv mysql-5.1.* /usr/local/mysql && \
 	groupadd mysql && \
 	useradd mysql -g mysql -d /usr/local/mysql && \
