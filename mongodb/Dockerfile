@@ -17,5 +17,5 @@ RUN mkdir -p /data/db
 
 EXPOSE 27017 28017
 ENTRYPOINT ["/usr/bin/mongod"]
-CMD ["--noprealloc", "--smallfiles"]
+CMD ["--noprealloc", "--smallfiles", "--storageEngine", "wiredTiger"]
 
