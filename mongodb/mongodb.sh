@@ -2,10 +2,10 @@
 
 ## see http://docs.docker.io/en/latest/examples/mongodb/
 
-docker build -t mongodb . || exit
+docker build --rm -t mongodb . || exit
 
 # Lean and mean
-MONGO_ID=$(docker run -d -p=27017 mongodb --noprealloc --smallfiles)
+MONGO_ID=$(docker run -d -p=27017 mongodb --noprealloc --smallfiles --storageEngine wiredTiger)
 PORT=$(docker port ${MONGO_ID} 27017 | cut -d":" -f2)
 
 echo ID : $MONGO_ID
