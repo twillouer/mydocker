@@ -9,6 +9,9 @@ RUN apt-get update && apt-get install -y python-dev libffi-dev libssl-dev &&\
     pip install unicodecsv ;\
     pip install tablib ;\
     pip install ipaddr ;\
+    pip install appdirs ;\
+    pip install cmd2 ;\
+    pip install pyopenssl ndg-httpsclient pyasn1 ;\
     pip install python-novaclient ;\
     pip install python-heatclient ;\
     pip install python-glanceclient ;\
