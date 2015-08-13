@@ -2,8 +2,11 @@ FROM ubuntu:latest
 
 ADD https://bootstrap.pypa.io/get-pip.py /get-pip.py
 
-RUN apt-get update && apt-get install -y python-dev libffi-dev libssl-dev &&\
+ENV DEBIAN_FRONTEND=noninteractive
+
+RUN apt-get update && apt-get install -y python-dev libffi-dev libssl-dev git &&\
     python /get-pip.py &&\
+    pip install pyopenssl ndg-httpsclient pyasn1 ;\
     pip install wrapt ;\
     pip install cryptography ;\
     pip install unicodecsv ;\
@@ -11,7 +14,6 @@ RUN apt-get update && apt-get install -y python-dev libffi-dev libssl-dev &&\
     pip install ipaddr ;\
     pip install appdirs ;\
     pip install cmd2 ;\
-    pip install pyopenssl ndg-httpsclient pyasn1 ;\
     pip install python-novaclient ;\
     pip install python-heatclient ;\
     pip install python-glanceclient ;\
@@ -22,5 +24,8 @@ RUN apt-get update && apt-get install -y python-dev libffi-dev libssl-dev &&\
     pip install python-saharaclient ;\
     pip install python-troveclient ;\
     pip install python-openstackclient ;\
-    pip install python-flameclient ;\
     apt-get autoremove && apt-get clean
+
+RUN cd /root && git clone https://github.com/stackforge/flame.git && cd flame
+
+RUN cd /root/flame && python setup.py install

@@ -7,7 +7,7 @@ then
 fi
 
 
-#docker build --rm  -t=openstackclient .
+docker build --rm  -t=openstackclient .
 
 FILE=$(readlink -ev "$1")
 #chmod +x "$FILE"
