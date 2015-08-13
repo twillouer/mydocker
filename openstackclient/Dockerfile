@@ -2,7 +2,7 @@ FROM ubuntu:latest
 
 ADD https://bootstrap.pypa.io/get-pip.py /get-pip.py
 
-RUN apt-get update && apt-get install -y python-dev libffi-dev &&\
+RUN apt-get update && apt-get install -y python-dev libffi-dev libssl-dev &&\
     python /get-pip.py &&\
     pip install python-novaclient ;\
 	pip install python-heatclient ;\
