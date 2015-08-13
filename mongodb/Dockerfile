@@ -11,7 +11,7 @@ RUN echo "deb http://repo.mongodb.org/apt/ubuntu "$(lsb_release -sc)"/mongodb-or
 
 # Install MongoDB
 RUN apt-get update
-RUN apt-get install -y mongodb-org=3.0.0
+RUN apt-get install -y mongodb-org=3.0.3
 
 # Create the MongoDB data directory
 RUN mkdir -p /data/db
