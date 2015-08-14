@@ -7,3 +7,10 @@ Usage:
  
  - `./run.sh <path to the 'sh' file>`
 
+In the container:
+
+```
+nova list
+
+neutron net-list
+```

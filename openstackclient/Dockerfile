@@ -26,6 +26,4 @@ RUN apt-get update && apt-get install -y python-dev libffi-dev libssl-dev git &&
     pip install python-openstackclient ;\
     apt-get autoremove && apt-get clean
 
-RUN cd /root && git clone https://github.com/stackforge/flame.git && cd flame
-
-RUN cd /root/flame && python setup.py install
+RUN cd /root && git clone https://github.com/stackforge/flame.git && cd flame && pip install -r requirements.txt && python setup.py install
