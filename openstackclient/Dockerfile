@@ -27,3 +27,7 @@ RUN apt-get update && apt-get install -y python-dev libffi-dev libssl-dev git &&
     apt-get autoremove && apt-get clean
 
 RUN cd /root && git clone https://github.com/stackforge/flame.git && cd flame && pip install -r requirements.txt && python setup.py install
+
+ADD https://github.com/docker/machine/releases/download/v0.4.0/docker-machine_linux-amd64  /usr/local/bin/docker-machine
+RUN chmod +x /usr/local/bin/docker-machine
+RUN apt-get install -y curl && curl -sSL https://get.docker.com/ | sh && apt-get autoremove && apt-get autoclean && apt-get clean

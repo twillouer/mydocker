@@ -7,9 +7,11 @@ then
 fi
 
 
-docker build --rm  -t=openstackclient .
+docker build --rm  -t=twillouer/mydocker:openstackclient .
 
 FILE=$(readlink -ev "$1")
 #chmod +x "$FILE"
 
-docker run -v="$FILE:/credential.sh" -ti openstackclient bash -ci 'source /credential.sh; bash'
+shift
+
+docker run -v="$FILE:/credential.sh" -ti $* twillouer/mydocker:openstackclient bash -ci 'source /credential.sh; bash'
