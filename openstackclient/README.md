@@ -92,8 +92,14 @@ On the swarm-master, we can now run a new container:
 ```
 eval $(docker-machine env --swarm swarm-master)
 docker info
+```
 
-docker 
+List all nodes:
 
 ```
+docker run --rm swarm list token://$TOKEN
+```
+
+And now, we can start dockers into the swarm environment: (see https://docs.docker.com/swarm/scheduler/filter/)
+
 
