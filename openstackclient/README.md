@@ -73,3 +73,27 @@ check if it works :
 don't forget to manually release the floating ip if needed
 
 
+## With docker-swarm
+
+```
+root@2cf3dcad109e:/# TOKEN=$(docker run swarm create)
+root@2cf3dcad109e:/# docker-machine -D create --driver openstack --openstack-flavor-name 4_vCPU_RAM_8G_HD_10G --openstack-image-name ubuntu-14.04_x86_64 --openstack-net-name inet-001 --openstack-floatingip-pool PublicNetwork-01 --openstack-ssh-user stack --swarm --swarm-master --swarm-discovery token://$TOKEN swarm-master
+```
+
+Now, create a 2 nodes cluster:
+
+```
+root@2cf3dcad109e:/# docker-machine -D create --driver openstack --openstack-flavor-name 4_vCPU_RAM_8G_HD_10G --openstack-image-name ubuntu-14.04_x86_64 --openstack-net-name inet-001 --openstack-floatingip-pool PublicNetwork-01 --openstack-ssh-user stack --swarm --swarm-discovery token://$TOKEN swarm-node-00
+root@2cf3dcad109e:/# docker-machine -D create --driver openstack --openstack-flavor-name 4_vCPU_RAM_8G_HD_10G --openstack-image-name ubuntu-14.04_x86_64 --openstack-net-name inet-001 --openstack-floatingip-pool PublicNetwork-01 --openstack-ssh-user stack --swarm --swarm-discovery token://$TOKEN swarm-node-01
+```
+
+On the swarm-master, we can now run a new container:
+
+```
+eval $(docker-machine env --swarm swarm-master)
+docker info
+
+docker 
+
+```
+
