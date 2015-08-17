@@ -21,6 +21,6 @@ RUN apt-get update && apt-get install -y python-dev libffi-dev libssl-dev git cu
 
 #RUN cd /root && git clone https://github.com/stackforge/flame.git && cd /root/flame && pip install -r requirements.txt && python setup.py install
 
-RUN curl -L https://github.com/docker/machine/releases/download/v0.4.0/docker-machine_linux-amd64 > /usr/local/bin/docker-machine && chmod +x /usr/local/bin/docker-machine
+RUN curl -L https://github.com/docker/machine/releases/download/v0.4.1/docker-machine_linux-amd64 > /usr/local/bin/docker-machine && chmod +x /usr/local/bin/docker-machine
 RUN curl -L https://github.com/docker/compose/releases/download/1.4.0/docker-compose-`uname -s`-`uname -m` > /usr/local/bin/docker-compose && chmod +x /usr/local/bin/docker-compose
 RUN curl -sSL https://get.docker.com/ | sh
