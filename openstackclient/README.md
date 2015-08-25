@@ -103,3 +103,24 @@ docker run --rm swarm list token://$TOKEN
 And now, we can start dockers into the swarm environment: (see https://docs.docker.com/swarm/scheduler/filter/)
 
 
+
+# Install an image 
+
+For example CoreOS (https://coreos.com/os/docs/latest/booting-on-openstack.html)
+
+```
+wget http://stable.release.core-os.net/amd64-usr/current/coreos_production_openstack_image.img.bz2
+bunzip2 coreos_production_openstack_image.img.bz2
+
+./run.sh ~/openstack.sh -v $PWD:/images
+```
+
+Inside the docker, let use glance:
+
+```
+glance image-create --name CoreOS \
+  --container-format bare \
+  --disk-format qcow2 \
+  --file /images/coreos_production_openstack_image.img \
+  --is-public False
+```
