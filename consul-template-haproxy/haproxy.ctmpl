@@ -1,0 +1,11 @@
+global
+    daemon
+    maxconn 4000
+
+defaults
+    mode http
+
+listen http-in
+    bind *:80{{range service "tomcat"}}
+    server {{.Node}} {{.Address}}:{{.Port}}{{end}}
+
