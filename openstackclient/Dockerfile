@@ -6,7 +6,7 @@ RUN apt-get update && apt-get install -y python-dev libffi-dev libssl-dev git cu
     curl https://bootstrap.pypa.io/get-pip.py > /get-pip.py &&\
     python /get-pip.py &&\
     rm /get-pip.py &&\
-    pip install pyopenssl ndg-httpsclient pyasn1 wrapt cryptography unicodecsv tablib ipaddr appdirs cmd2 &&\
+    pip install pyopenssl ndg-httpsclient pyasn1 wrapt cryptography unicodecsv tablib ipaddr appdirs cmd2 oslo.log &&\
     pip install python-novaclient &&\
     pip install python-openstackclient &&\
     pip install python-heatclient &&\
