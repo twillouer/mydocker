@@ -1,6 +1,7 @@
 FROM ubuntu:latest
 
 ENV DEBIAN_FRONTEND=noninteractive
+ENV REGENERATE=true
 
 RUN apt-get update && apt-get install -y python-dev libffi-dev libssl-dev git curl &&\
     curl https://bootstrap.pypa.io/get-pip.py > /get-pip.py &&\
